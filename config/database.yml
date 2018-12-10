@@ -7,8 +7,8 @@ default: &default
   # you set during the installation of postgres.
   # If you're on a Mac and installed postgres via homebrew, you can simply
   # delete the following two lines.
-  username: postgres
-  password: 123456
+  username: Abbi
+  password: sachez
 
 development:
   <<: *default

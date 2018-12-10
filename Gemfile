@@ -46,3 +46,4 @@ end
 
 gem 'rspec', '~> 2.99.0'
 gem 'rspec-rails', '~> 2.99.0'
+gem 'rails_12factor'
