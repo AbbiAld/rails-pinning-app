@@ -1,6 +1,9 @@
 body {
   background: url(asset-path('laptop-background.jpg')) no-repeat;
 }
+.container {
+    width: 80%;
+}
 a {
   color: #dd5566;
 }
@@ -22,6 +25,26 @@ h1 {
   background-color: #fff;
   padding: 40px;  
 }
+
+.logo-thumbnail{
+img {
+
+  width: 100%;
+}
+}
 hr{
   clear:both;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+
+  .btn {
+    margin-top: 1.5em;
+    width: 30%;
+    align-self: center;
+    background-color: #dd5566;
+    border-color: #dd5566;
+    font-weight: bold;
+    }
 }

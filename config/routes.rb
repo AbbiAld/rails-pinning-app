@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :pins
 
   get '/library' => 'pins#index'
+
+  #post 'pins/create', to: redirect('pins#show')
     
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
