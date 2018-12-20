@@ -3,6 +3,7 @@
   <h3>A Collection of Ruby on Rails Resources for Beginners</h3>
 </div>
 <hr/>
+<%= link_to 'Create New Pin', new_pin_path %>
 <div class="pins">
   <% @pins.each_slice(3) do |row| %>
     <div class="row">

@@ -1,0 +1,27 @@
+<h1>Edit Pin</h1>
+<% if !@errors.nil? %>
+	<div class="error">
+		<label><%= pluralize(@errors.count, "error") %> prohibited this pin from being saved:</label>
+		<ul>
+			<% @errors.full_messages.each do |msg| %>
+				<li><%= "#{msg}" %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+<%= form_for @pin do |f| %>
+	<div class="form-group">
+		<%= label_tag 'title' %>
+		<%= f.text_field :title, class: "form-control" %>
+		<%= label_tag 'text', 'Description' %>
+		<%= f.text_area :text, class: "form-control" %>
+		<%= label_tag 'url' %>
+		<%= f.url_field :url, class: "form-control" %>
+		<%= label_tag 'slug' %>
+		<%= f.text_field :slug, class: "form-control" %>
+
+		<%= label_tag 'category_id', 'Category' %>
+		<%= f.collection_select(:category_id, Category.all, :id, :name, {}, html_options = {class: "form-control"}) %>
+		<%= f.submit "Update", class: "btn btn-primary" %>
+	</div>
+<% end %>

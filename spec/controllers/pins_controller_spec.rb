@@ -82,4 +82,41 @@ RSpec.describe PinsController do
 		end
 	end
 
+	describe "GET edit" do
+		before(:each) do
+			@pin = Pin.first
+			get :edit, id: @pin.id
+		end
+		#responds successfully
+		it 'responds successfully' do
+			expect(response.success?).to be(true)
+		end
+		#renders the edit template
+		it 'renders the edit template' do
+			expect(response).to render_template(:edit)
+		end
+
+		#assigns an instance variable call @pin to the PIn with the appropriate id
+		it 'assigns an instance variable called @pin to the Pin with the appropriate id' do
+			expect(assigns(:pin)).to eq(Pin.first)
+		end
+	end
+
+	describe "PUT update" do
+		before(:each) do
+			@pin = Pin.first
+			#@pin.title = "New Ruby Tutorial"
+		end
+		#responds with a redirect
+		it 'responds with a redirect' do
+			put :update, pin: @pin
+			expect(response.redirect?).to be(true)
+		end
+
+
+    #updates a pin
+    #redirects to the show view
+
+	end
+
 end
