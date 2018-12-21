@@ -105,17 +105,38 @@ RSpec.describe PinsController do
 	describe "PUT update" do
 		before(:each) do
 			@pin = Pin.first
-			#@pin.title = "New Ruby Tutorial"
+			@new_title = {title: "New Rails Title"}
+			@bad_title = {title: ""}
 		end
 		#responds with a redirect
 		it 'responds with a redirect' do
-			put :update, pin: @pin
+			put :update, pin: @new_title, id: @pin.id
+			@pin.reload
 			expect(response.redirect?).to be(true)
 		end
 
-
     #updates a pin
+    it 'updates a pin' do
+    	put :update, pin: @new_title, id: @pin.id
+    	expect(Pin.find_by_title("New Rails Title").present?).to be(true)
+    end
+
     #redirects to the show view
+    it 'redirects to the show view' do
+    	put :update, pin: @new_title, id: @pin.id
+    	expect(response).to redirect_to(pin_url(@pin.id))
+    end
+
+    #assigns an @errors instance variable
+    it 'assigns an @errors instance variable' do
+    	put :update, pin: @bad_title, id: @pin.id
+    	expect(assigns[:errors].present?).to be(true)
+    end
+    #renders the edit view
+    it 'renders the edit view with an error' do
+    	put :update, pin: @bad_title, id: @pin.id
+    	expect(response).to render_template(:edit)
+    end
 
 	end
 
